@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Luokkakaavio.Program">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAgAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="parkkihalli" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Luokkakaavio.Parkkihalli">
+    <Position X="3" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAICAAAAEJAAAABAEAAAAAAAAABAABAAAAAAA=</HashCode>
+      <FileName>Parkkihalli.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="pyorateline" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="parkkipaikat" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Luokkakaavio.Parkkipaikka">
+    <Position X="3" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAABkAAIgA=</HashCode>
+      <FileName>Parkkipaikka.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Luokkakaavio.Auto">
+    <Position X="5.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Auto.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="kuljettaja" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Luokkakaavio.Kuljettaja">
+    <Position X="6.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Kuljettaja.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Luokkakaavio.Moottoripyora">
+    <Position X="8.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Moottoripyora.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Luokkakaavio.Polkupyora">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQAAAAAAAgIAAIAAAAAAAAAAQAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Polkupyora.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Luokkakaavio.Pyöräteline">
+    <Position X="0.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pyöräteline.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="polkupyorat" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Luokkakaavio.Moottoriajoneuvo">
+    <Position X="8" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQAAAAAAAgIAAIIAAAAAAAAAQAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Moottoriajoneuvo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

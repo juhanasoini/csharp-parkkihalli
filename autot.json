@@ -1,0 +1,40 @@
+[
+  {
+    "ajoneuvo": {
+      "type": "Henkilöauto",
+      "merkki": "Honda",
+      "malli": "CRV"
+    }
+  },
+  {
+    "ajoneuvo": {
+      "type": "Henkilöauto",
+      "merkki": "Ford",
+      "malli": "Mondeo"
+    }
+  },
+  {
+    "ajoneuvo": null
+  },
+  {
+    "ajoneuvo": null
+  },
+  {
+    "ajoneuvo": null
+  },
+  {
+    "ajoneuvo": null
+  },
+  {
+    "ajoneuvo": null
+  },
+  {
+    "ajoneuvo": null
+  },
+  {
+    "ajoneuvo": null
+  },
+  {
+    "ajoneuvo": null
+  }
+]
