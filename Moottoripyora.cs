@@ -14,9 +14,9 @@ namespace Luokkakaavio
         public Moottoripyora(String merkki, String malli) : base(merkki, malli)
         {
         }
-        //public override string kutsumanimi()
-        //{
-        //    return Tyyppi + ": " + Merkki + " " + Malli;
-        //}
+        public override string kutsumanimi()
+        {
+            return Tyyppi + ": " + Merkki + " " + Malli;
+        }
     }
 }

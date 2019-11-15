@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 using Luokkakaavio.Rajapinnat;
+using Newtonsoft.Json.Serialization;
 
 namespace Luokkakaavio
 {
@@ -90,7 +91,22 @@ namespace Luokkakaavio
         // Tallentaa ruudut tiedostoon
         public void tallennaTiedosto()
         {
-            String json = JsonConvert.SerializeObject(this.parkkipaikat, Formatting.Indented);
+            //https://stackoverflow.com/questions/46057081/json-newtonsoft-c-sharp-deserialize-list-of-objects-of-different-types
+            KnownTypesBinder loKnownTypesBinder = new KnownTypesBinder()
+            {
+                KnownTypes = new List<Type> { typeof(Auto), typeof(Moottoripyora) }
+            };
+
+            IEnumerable<Parkkipaikka> Data = parkkipaikat.AsEnumerable();
+
+            JsonSerializerSettings loJsonSerializerSettings = new JsonSerializerSettings()
+            {
+                TypeNameHandling = TypeNameHandling.Objects,
+                SerializationBinder = loKnownTypesBinder,
+                Formatting = Formatting.Indented
+            };
+
+            String json = JsonConvert.SerializeObject(Data, loJsonSerializerSettings);
             File.WriteAllText( autotTiedosto, json );
             //Console.WriteLine( json );
         }
@@ -101,7 +117,22 @@ namespace Luokkakaavio
             if (new FileInfo(autotTiedosto).Length == 0)
                 return;
 
-            this.parkkipaikat = JsonConvert.DeserializeObject<List<Parkkipaikka>>(File.ReadAllText( autotTiedosto ));
+            KnownTypesBinder loKnownTypesBinder = new KnownTypesBinder()
+            {
+                KnownTypes = new List<Type> { typeof(Auto), typeof(Moottoripyora), typeof(Parkkipaikka) }
+            };
+
+            //IEnumerable<Parkkipaikka> Data = parkkipaikat.AsEnumerable();
+
+            JsonSerializerSettings loJsonSerializerSettings = new JsonSerializerSettings()
+            {
+                TypeNameHandling = TypeNameHandling.Objects,
+                SerializationBinder = loKnownTypesBinder,
+                Formatting = Formatting.Indented
+            };
+
+            this.parkkipaikat = JsonConvert.DeserializeObject<List<Parkkipaikka>>(File.ReadAllText( autotTiedosto ), loJsonSerializerSettings);
+            //this.parkkipaikat = JsonConvert.DeserializeObject<List<Parkkipaikka>>(File.ReadAllText( autotTiedosto ));
         }
 
         // Etsii olemassa olevista ruuduista vapaan
@@ -119,6 +150,21 @@ namespace Luokkakaavio
             }
 
             return vapaaRuutu;
+        }
+    }
+    public class KnownTypesBinder : ISerializationBinder
+    {
+        public IList<Type> KnownTypes { get; set; }
+
+        public Type BindToType(string assemblyName, string typeName)
+        {
+            return KnownTypes.SingleOrDefault(t => t.Name == typeName);
+        }
+
+        public void BindToName(Type serializedType, out string assemblyName, out string typeName)
+        {
+            assemblyName = null;
+            typeName = serializedType.Name;
         }
     }
 }
