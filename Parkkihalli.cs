@@ -23,7 +23,7 @@ namespace Luokkakaavio
 
         public Parkkihalli()
         {
-            //Ensimmäisellä kerralla luodaan tyhjä tiedosto jos tiedostoa ei löydy. Vähennetään virhetilanteiden todennäköisyyttä
+            //Luodaan tyhjä tiedosto jos tiedostoa ei löydy. Vähennetään virhetilanteiden todennäköisyyttä
             if (!File.Exists(autotTiedosto))
                 File.WriteAllText( autotTiedosto, "" );
 

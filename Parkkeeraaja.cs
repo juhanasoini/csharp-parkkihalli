@@ -12,7 +12,7 @@ namespace Luokkakaavio
         Moottoriajoneuvo ajoneuvo;
         int vaihe = 1;
         bool parkissa = false;
-        //bool noudettu = false;
+
         public Moottoriajoneuvo parkkeeraa()
         {
             Console.WriteLine("Parkkeeraa");

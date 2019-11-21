@@ -36,7 +36,7 @@ namespace Luokkakaavio
         }
 
         // Laskee parkissa kulutetun ajan tunneissa
-        // Alkeneet tunnit
+        // Alkaneet tunnit
         public int kulunutAika()
         {
             DateTime alku = this.parkkeerattuAika;
@@ -44,13 +44,13 @@ namespace Luokkakaavio
 
             TimeSpan kulunutaika = loppu - alku;
 
-            return (int)kulunutaika.TotalHours;
+            return (int)Math.Ceiling( kulunutaika.TotalHours );
         }
 
         // Laskee parkkeerauksen hinnan
         public double laskeHinta()
         {
-            int tunnit = this.kulunutAika();
+            int tunnit = kulunutAika();
             return tunnit * hinta;
         }
     }

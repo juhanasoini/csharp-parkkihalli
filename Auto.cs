@@ -11,11 +11,12 @@ namespace Luokkakaavio
 
         public Auto()
         {
-            this.Tyyppi = "Henkilöauto";
+            Tyyppi = "Henkilöauto";
         }
 
         public Auto(String merkki, String malli ) : base( merkki, malli )
         {
+            Tyyppi = "Henkilöauto";
         }
 
         public override string kutsumanimi()
