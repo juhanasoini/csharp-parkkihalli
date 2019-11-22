@@ -8,5 +8,6 @@ namespace Luokkakaavio
 {
     class Testiluopkka
     {
+        public int MyProperty { get; set; }
     }
 }
