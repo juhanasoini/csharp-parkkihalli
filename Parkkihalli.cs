@@ -14,12 +14,11 @@ namespace Luokkakaavio
         // Parkkihallin ruutujen määrä
         static int ruutuja = 10;
         static string autotTiedosto = @"autot.json";
-        static string fillaritTiedosto = @"fillarit.json";
       
         public List<Parkkipaikka> parkkipaikat = new List<Parkkipaikka>();
 
         //TODO: implement pyöräteline
-        public Pyöräteline pyorateline;
+        public Pyöräteline pyorateline = new Pyöräteline();
 
         public Parkkihalli()
         {
@@ -27,8 +26,8 @@ namespace Luokkakaavio
             if (!File.Exists(autotTiedosto))
                 File.WriteAllText( autotTiedosto, "" );
 
-            if (!File.Exists(fillaritTiedosto))
-                File.WriteAllText(fillaritTiedosto, "" );
+            //if (!File.Exists(fillaritTiedosto))
+            //    File.WriteAllText(fillaritTiedosto, "" );
 
             for (int i = 0; i < ruutuja; ++i)
                 this.parkkipaikat.Add( new Parkkipaikka() );
@@ -89,7 +88,7 @@ namespace Luokkakaavio
         }
 
         // Tallentaa ruudut tiedostoon
-        public void tallennaTiedosto()
+        public void tallennaParkkipaikat()
         {
             //https://stackoverflow.com/questions/46057081/json-newtonsoft-c-sharp-deserialize-list-of-objects-of-different-types
             KnownTypesBinder loKnownTypesBinder = new KnownTypesBinder()
@@ -112,7 +111,7 @@ namespace Luokkakaavio
         }
 
         // Lataa ruudut tiedostosta
-        public void lataaTiedosto()
+        public void lataaParkkipaikat()
         {
             if (new FileInfo(autotTiedosto).Length == 0)
                 return;
@@ -151,6 +150,7 @@ namespace Luokkakaavio
 
             return vapaaRuutu;
         }
+
     }
     public class KnownTypesBinder : ISerializationBinder
     {

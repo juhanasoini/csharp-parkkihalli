@@ -10,6 +10,7 @@ namespace Luokkakaavio
     class Parkkeeraaja
     {
         Moottoriajoneuvo ajoneuvo;
+        Polkupyora fillari;
         int vaihe = 1;
         bool parkissa = false;
 
@@ -111,6 +112,41 @@ namespace Luokkakaavio
             }
 
             return ruutu;
+        }
+
+        public Polkupyora varastoiFillari()
+        {
+            fillari = new Polkupyora();
+
+            bool valmis = false;
+
+            string merkki = "";
+            string malli = "";
+            while( !valmis )
+            {
+                Console.Write( "Anna fillarin merkki: " );
+                merkki = Console.ReadLine();
+
+                if (merkki != "")
+                {
+                    fillari.Merkki = merkki;
+                    valmis = true;
+                }
+            }
+
+            valmis = false;
+            while (!valmis)
+            {
+                Console.Write("Anna fillarin tyyppi: ");
+                malli = Console.ReadLine();
+                if (malli != "")
+                {
+                    fillari.Malli = malli;
+                    valmis = true;
+                }
+            }
+
+            return fillari;
         }
     }
 }

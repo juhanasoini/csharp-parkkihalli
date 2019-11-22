@@ -14,7 +14,7 @@ namespace Luokkakaavio
         {
             Console.OutputEncoding = Encoding.UTF8;
             //Ladataan tiedosto, jossa parkissa olevat autot ja tyhjät ruudut
-            parkkihalli.lataaTiedosto();
+            parkkihalli.lataaParkkipaikat();
             List<string> vaihtoehdot = Ohjeet.TulostaOhjeet();
            
             bool jatka = true;
@@ -55,7 +55,18 @@ namespace Luokkakaavio
                             Console.WriteLine( "Parkkeerattu paikalle {0}. Tarvitset tätä poistuessasi!", paikka );
                         }
 
-                        parkkihalli.tallennaTiedosto();
+                        parkkihalli.tallennaParkkipaikat();
+                        break;
+                    case "f":
+                        Console.Clear();
+                        Console.WriteLine( "Jätä polkupyörä. HUOM: Ei takeita, että saat omasi takaisin!" );
+
+                        var fillari = parkkeeraaja.varastoiFillari();
+                        var tallessa = parkkihalli.pyorateline.parkkeeraa( fillari );
+
+                        if (tallessa)
+                            Console.WriteLine( "Homma hyvä" );
+
                         break;
                     case "n":
                         // Kysytään käyttäjältä ruutu ja poistetaan auto parkkihallista. Lopuksi tallennetaan parkkipaikat tiedostoon
@@ -67,7 +78,7 @@ namespace Luokkakaavio
                         if(noudettuAjoneuvo != null)
                         {
                             Console.WriteLine("Autonne: {0}. Pesty ja puunattu.", noudettuAjoneuvo.kutsumanimi());
-                            parkkihalli.tallennaTiedosto();
+                            parkkihalli.tallennaParkkipaikat();
                         }
                         
                         Ohjeet.TulostaOhjeet();
@@ -84,13 +95,6 @@ namespace Luokkakaavio
                             {
                                 parkkipaikka = parkkihalli.parkkipaikat[i];
                                 var ajoneuvo1 = parkkipaikka.getOccupant();
-                                
-                                //if(ajoneuvo1 is Auto )
-                                    
-                                //if( ajoneuvo1.Tyyppi == "Henkilöauto" )
-                                //    ajoneuvo1 = ajoneuvo1 as Auto;
-                                //else
-                                //    ajoneuvo1 =  ajoneuvo1 as Moottoripyora;
 
                                 Console.WriteLine( "Ruutu {0}: {1}.", i, ajoneuvo1.kutsumanimi());
                                 if(komento == "t")
@@ -103,6 +107,19 @@ namespace Luokkakaavio
                             }
                             else
                                 Console.WriteLine("Ruutu {0}: VAPAA", i);
+                        }
+                        Console.WriteLine();
+                        Ohjeet.TulostaOhjeet();
+
+                        break;
+                    case "lf":
+                        // Listaa parkkihallista löytyvät fillarit
+                        Console.Clear();
+                        Console.WriteLine( "Telineessä olevat fillarit:" );
+                        
+                        for (int i = 0; i < parkkihalli.pyorateline.polkupyorat.Count; i++)
+                        {
+                            Console.WriteLine( "{0}: "+ parkkihalli.pyorateline.polkupyorat[i].kutsumanimi(), i  );
                         }
                         Console.WriteLine();
                         Ohjeet.TulostaOhjeet();
