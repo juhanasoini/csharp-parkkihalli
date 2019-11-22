@@ -51,7 +51,7 @@ namespace Luokkakaavio
 
         public string kutsumanimi()
         {
-            return Tyyppi+ " " +Merkki + " " + Malli;
+            return Tyyppi+ ": " +Merkki + " " + Malli;
         }
     }
 

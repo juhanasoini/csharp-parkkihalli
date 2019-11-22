@@ -8,15 +8,15 @@ namespace Luokkakaavio
 
         public static List<string> TulostaOhjeet()
         {
-            Console.WriteLine("|------------------------------|");
-            Console.WriteLine("| [p] = parkkeeraa auto        |");
-            Console.WriteLine("| [f] = jätä fillari           |");
-            Console.WriteLine("| [n] = nouda auto             |");
-            Console.WriteLine("| [l] = listaa autot           |");
+            Console.WriteLine("|-------------------------------|");
+            Console.WriteLine("| [p]  = parkkeeraa auto        |");
+            Console.WriteLine("| [f]  = jätä fillari           |");
+            Console.WriteLine("| [n]  = nouda auto             |");
+            Console.WriteLine("| [l]  = listaa autot           |");
             Console.WriteLine("| [lf] = listaa fillarit        |");
-            Console.WriteLine("| [t] = listaa autot tarkemmin |");
-            Console.WriteLine("| [o] = näytä ohjeet           |");
-            Console.WriteLine("|------------------------------|\n");
+            Console.WriteLine("| [t]  = listaa autot tarkemmin |");
+            Console.WriteLine("| [o]  = näytä ohjeet           |");
+            Console.WriteLine("|-------------------------------|\n");
 
             List<string> vaihtoehdot = new List<string>();
             vaihtoehdot.Add("p");

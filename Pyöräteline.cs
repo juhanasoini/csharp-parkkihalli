@@ -22,7 +22,6 @@ namespace Luokkakaavio
             polkupyorat.Add( fillari );
 
             return true;
-
         }
 
         private bool onTilaa()
@@ -30,10 +29,6 @@ namespace Luokkakaavio
             return polkupyorat.Count < maxLkm;
         }
 
-        public bool tallenna()
-        {
-            return true;
-        }
         public void tallennaFillarit()
         {
             //https://stackoverflow.com/questions/46057081/json-newtonsoft-c-sharp-deserialize-list-of-objects-of-different-types
@@ -42,7 +37,7 @@ namespace Luokkakaavio
                 KnownTypes = new List<Type> { typeof(Polkupyora) }
             };
 
-            IEnumerable<Parkkipaikka> Data = polkupyorat.AsEnumerable();
+            IEnumerable<Polkupyora> Data = polkupyorat.AsEnumerable();
 
             JsonSerializerSettings loJsonSerializerSettings = new JsonSerializerSettings()
             {
@@ -53,7 +48,29 @@ namespace Luokkakaavio
 
             String json = JsonConvert.SerializeObject(Data, loJsonSerializerSettings);
             File.WriteAllText(fillaritTiedosto, json);
-            //Console.WriteLine( json );
+        }
+
+        public void lataaFillarit()
+        {
+            if (new FileInfo(fillaritTiedosto).Length == 0)
+                return;
+
+            KnownTypesBinder loKnownTypesBinder = new KnownTypesBinder()
+            {
+                KnownTypes = new List<Type> { typeof(Polkupyora) }
+            };
+
+            JsonSerializerSettings loJsonSerializerSettings = new JsonSerializerSettings()
+            {
+                TypeNameHandling = TypeNameHandling.Objects,
+                SerializationBinder = loKnownTypesBinder,
+                Formatting = Formatting.Indented
+            };
+
+            polkupyorat = JsonConvert.DeserializeObject<List<Polkupyora>>(File.ReadAllText(fillaritTiedosto), loJsonSerializerSettings);
+
+            if( polkupyorat.Count > maxLkm)
+                polkupyorat.RemoveRange(maxLkm, polkupyorat.Count-maxLkm );
         }
     }
 }
